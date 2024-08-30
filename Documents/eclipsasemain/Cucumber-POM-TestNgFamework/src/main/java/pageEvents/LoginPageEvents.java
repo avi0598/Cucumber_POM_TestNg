@@ -13,7 +13,7 @@ public class LoginPageEvents {
 	ElementFetch ele= new ElementFetch();
 	public void verifyIfLoginPageIsLoaded() throws InterruptedException {
 		
-	ele.getWebElement("XPATH", HomePageElements.signInButtonText).click();
+	ele.getWebElement("XPATH", HomePageElements.LogInButtonText).click();
 	Thread.sleep(100);
 	{
 	Assert.assertTrue(ele.getWebElements("XPATH", LoginPageElement.LoginText).size()>0,"not found");
@@ -22,6 +22,9 @@ public class LoginPageEvents {
 }
 	public void enterCredentials()
 	{
+		
+		ele.getWebElement("XPATH", LoginPageElement.LogInButtonText).click();
+
  
 	ele.getWebElement("XPATH", LoginPageElement.emailAddress).sendKeys("rmishra@gmail.com");
 	System.out.println("email entered");

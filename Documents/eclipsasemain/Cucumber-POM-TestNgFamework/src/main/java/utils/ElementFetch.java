@@ -70,5 +70,4 @@ public class ElementFetch {
 	default:
 
 	return null;
-
 }}}

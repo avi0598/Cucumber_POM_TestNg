@@ -31,15 +31,11 @@ import utils.constants;
 
 public class baseTest {
 
-	public  static WebDriver driver;
+	public static     WebDriver driver;
 	public ExtentSparkReporter sparkReporter;
 	public ExtentReports extent;
 	public ExtentTest logger;
-	@BeforeTest
-public void initializeBrowser() {
-		setupDriver();
 	
-	}
 	@BeforeMethod
  	public void beforeMethod(Method testMethod) {
  		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + File.separator+"reports"+File.separator+"SDETADDAE");
@@ -64,16 +60,18 @@ public void initializeBrowser() {
 		else if(result.getStatus() == ITestResult.SUCCESS) {
 			logger.log(Status. PASS, MarkupHelper.createLabel (result.getName()+"Test case Pass ",ExtentColor.GREEN));}
 
-		
  
 	}
-	@AfterTest
-	public void aftertest() {
-		driver.quit();
-		extent.flush();
+	@AfterClass
+	public void afterClass() {
+
+		driver.close();
+ 		extent.flush();
 
 	}
-	public void setupDriver(){
+	
+
+	public void setupDriverr(){
 		String browser=utils.constants.browser;
 
 		if(browser.equalsIgnoreCase("chrome")){
@@ -88,7 +86,6 @@ public void initializeBrowser() {
 		}
 	}
 
- 
 
 
 
